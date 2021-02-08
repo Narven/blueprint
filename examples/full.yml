@@ -1,0 +1,28 @@
+version: 1
+
+name: Full Blueprint
+
+force: true
+
+source: .
+
+output: ./examples/gen
+
+structure:
+  - Folder1:
+  - Folder2:
+  - Folder3:
+  - Folder4:
+      - Folder41:
+          - extra
+          - index.tsx|reactdom
+      - Folder42:
+          - main.go
+  - simple
+
+templates:
+  - reactdom: >+
+      ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('root')
+      );

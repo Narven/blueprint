@@ -1,0 +1,14 @@
+version: 1
+
+name: Simple Blueprint
+
+source: .
+
+output: ./examples/gen
+
+structure:
+  - FolderA/
+  - FolderB/
+  - FolderC/
+  - FolderD/
+  - simple
