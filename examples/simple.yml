@@ -4,11 +4,12 @@ name: Simple Blueprint
 
 source: .
 
-output: ./dist
+path: dist
 
 structure:
-  - FolderA/
-  - FolderB/
-  - FolderC/
-  - FolderD/
+  - FolderA/xxx/a/b/c/d/e/f/g
+  - FolderB/c
+  - FolderC
+  - FolderD
   - simple
+  - FolderA/xxx/B
