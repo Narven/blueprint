@@ -4,7 +4,7 @@ name: Simple Blueprint
 
 source: .
 
-output: ./examples/gen
+output: ./dist
 
 structure:
   - FolderA/
