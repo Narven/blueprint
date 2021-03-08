@@ -11,12 +11,7 @@ branches:
     - develop
 
 go:
-  - 1.16.x
-
-addons:
-  apt:
-    packages:
-      - upx
+  - 1.15.x
 
 env:
   global:
@@ -31,7 +26,6 @@ before_script:
 
 script:
   - go build
-  - upx --brute blueprint
 
 # before_deploy:
 #   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
