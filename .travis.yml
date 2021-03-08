@@ -1,5 +1,5 @@
 language: go
-
+sudo: false
 os:
   - windows
   - linux
@@ -18,6 +18,7 @@ env:
     - GO111MODULE=on
 
 before_install:
+  - go get github.com/mitchellh/gox
   - go get -v golang.org/x/lint/golint
 
 before_script:
@@ -25,14 +26,22 @@ before_script:
   - go test -v ./...
 
 script:
-  - go build
+  # Only build binaries from the latest Go release.
+  - if [ "${LATEST}" = "true" ]; then gox -os="linux darwin windows" -arch="amd64" -output="logshare.." -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 
-# before_deploy:
-#   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-#   - git tag $TRAVIS_TAG
+before_deploy:
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')}
+  - git tag $TRAVIS_TAG
 
 deploy:
   provider: releases
-  api_key: "$GITHUB_TOKEN"
-  file: blueprint
+  api_key:
+    secure: "$GITHUB_TOKEN"
+  file:
+    - blueprint.windows.amd64.exe
+    - blueprint.darwin.amd64
+    - blueprint.linux.amd64
   skip_cleanup: true
+  # Only build binaries for tagged commits
+  tags: true
+  condition: $LATEST = true
