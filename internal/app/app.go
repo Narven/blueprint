@@ -15,7 +15,6 @@ type Template struct {
 	Path      *string   `yaml:"path,omitempty"`
 	Name      *string   `yaml:"name,omitempty"`
 	Structure yaml.Node `yaml:"structure"`
-	Jobs      yaml.Node `yaml:"jobs,omitempty"`
 }
 
 func Parse(data []byte) {
@@ -30,16 +29,13 @@ func Parse(data []byte) {
 		bad("error: %v", err)
 		return
 	}
-	//fmt.Printf("--- t:\n%v\n\n", t)
 
-	d, err := yaml.Marshal(&t)
+	_, err = yaml.Marshal(&t)
 	if err != nil {
 		bad(err.Error())
 		log("error: %v", err)
 		return
 	}
-
-	info(string(d))
 
 	if t.Name != nil {
 		info("Running template:", *t.Name)
@@ -70,14 +66,13 @@ func Parse(data []byte) {
 		info(fmt.Printf("Path: %s", current))
 	}
 
-	//	log(fmt.Printf("%+v\n", t.Structure))
 	for _, path := range t.Structure.Content {
+		log(fmt.Printf("%+v\n", path))
 		if len(path.Content) == 0 {
 			if err := os.MkdirAll(path.Value, 0777); err != nil {
 				bad(err.Error())
 			}
 		} else {
-			// log(fmt.Printf("%+v\n", path))
 			if path.Tag == "!!map" {
 				if err := ioutil.WriteFile(path.Content[0].Value, []byte(path.Content[1].Value), 0644); err != nil {
 					bad(err.Error())
