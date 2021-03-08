@@ -1,33 +1,28 @@
 language: go
 sudo: false
 os:
-  - windows
-  - linux
-  - osx
+    - osx
 
 branches:
-  only:
-    - master
-    - develop
+    only:
+        - master
 
 go:
-  - 1.15.x
+    - 1.15.x
 
 env:
-  global:
-    - GO111MODULE=on
+    global:
+        - GO111MODULE=on
 
 before_install:
-  - go get github.com/mitchellh/gox
-  - go get -v golang.org/x/lint/golint
+    - go get -v golang.org/x/lint/golint
 
 before_script:
-  - go vet ./...
-  - go test -v ./...
+    - go vet ./...
+    - go test -v ./...
 
 script:
-  # Only build binaries from the latest Go release.
-  - if [ "${LATEST}" = "true" ]; then gox -os="linux darwin windows" -arch="amd64" -output="logshare.." -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
+    - go build -ldflags "-s -w"
 
 before_deploy:
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')}
@@ -37,10 +32,7 @@ deploy:
   provider: releases
   api_key:
     secure: "$GITHUB_TOKEN"
-  file:
-    - blueprint.windows.amd64.exe
-    - blueprint.darwin.amd64
-    - blueprint.linux.amd64
+  file: blueprint
   skip_cleanup: true
   # Only build binaries for tagged commits
   tags: true
