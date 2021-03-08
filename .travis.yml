@@ -3,6 +3,7 @@ language: go
 branches:
   only:
     - master
+    - develop
 
 go:
   - 1.16.x
@@ -11,8 +12,10 @@ addons:
   apt:
     packages:
       - upx
+
 env:
-  - GO111MODULE=on
+  global:
+    - GO111MODULE=on
 
 before_install:
   - go get -v golang.org/x/lint/golint
