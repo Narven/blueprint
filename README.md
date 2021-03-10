@@ -81,6 +81,10 @@ structure:
         }
 ```
 
+## Releases
+
+`make version=<version> release`
+
 ## TODO
 
 [x] Generate basic folder/file structure (1 level deep)

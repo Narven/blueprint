@@ -28,3 +28,6 @@ release:
 	goreleaser --snapshot --rm-dist
 	goreleaser release --rm-dist
 
+dryrun:
+	#goreleaser --snapshot --skip-publish --rm-dist
+	goreleaser build
