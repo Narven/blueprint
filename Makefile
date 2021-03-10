@@ -26,5 +26,5 @@ release:
 	git tag -a v$(version) -m "Release"
 	git push origin v$(version)
 	goreleaser --snapshot --rm-dist
-	goreleaser release
+	goreleaser release --rm-dist
 
