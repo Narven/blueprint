@@ -64,3 +64,6 @@ Temporary Items
 .history
 .ionide
 dist
+bin
+dist/
+.env

@@ -1,0 +1,29 @@
+version: 1
+
+name: Go API Structure
+
+path: apps/api/internal/calendar
+
+structure:
+    - delivery
+    - dtos
+    - repository
+    - usecase
+    - delivery.go: |
+        package calendar
+
+        type Handlers interface {
+
+        }
+    - repository.go: |
+        package calendar
+
+        type Repository interface {
+
+        }
+    - usecase.go: |
+        package calendar
+
+        type UseCase interface {
+
+        }
