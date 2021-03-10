@@ -14,8 +14,8 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "blueprint",
-	Short: "File/folder structure generator",
-	Long:  `Blueprint allows you to generate files and folders based on yml templates`,
+	Short: "Blueprint is a folders/files scaffold",
+	Long:  `Blueprint is a command line tool to help you scaffold any files/folders structure based on blueprints written in yaml.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
