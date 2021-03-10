@@ -23,8 +23,8 @@ clean:
 release:
 	# goreleaser --snapshot --skip-publish
 	rm -rf $(DIST_FOLDER)
-	git tag -a v$(tag) -m "Release"
-	git push origin v$(tag)
+	git tag -a v$(version) -m "Release"
+	git push origin v$(version)
 	goreleaser --snapshot --rm-dist
 	goreleaser release
 
