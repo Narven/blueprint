@@ -30,4 +30,4 @@ release:
 
 dryrun:
 	#goreleaser --snapshot --skip-publish --rm-dist
-	goreleaser build
+	goreleaser release --skip-publish
