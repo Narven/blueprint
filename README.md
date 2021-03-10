@@ -87,11 +87,11 @@ structure:
 
 ## TODO
 
-[x] Generate basic folder/file structure (1 level deep)
-[ ] Generate multi level folder/file structure
-[ ] Pass path name using args to replace the one from yml
-[ ] Use flags + template system to be to pass variables into the yml file, to make it more dynamic
-[ ] Create tests and add them to CI
-[ ] Better validation and error reporting
-[ ] Add --dry-run
-[ ] Be able to import external template files for the files contents
+* [x] Generate basic folder/file structure (1 level deep)
+* [ ] Generate multi level folder/file structure
+* [ ] Pass path name using args to replace the one from yml
+* [ ] Use flags + template system to be to pass variables into the yml file, to make it more dynamic
+* [ ] Create tests and add them to CI
+* [ ] Better validation and error reporting
+* [ ] Add --dry-run
+* [ ] Be able to import external template files for the files contents
