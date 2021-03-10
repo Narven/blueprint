@@ -20,10 +20,11 @@ build: clean compile
 clean:
 	rm -rf $(DIST_FOLDER)
 
-prod:
+release:
 	# goreleaser --snapshot --skip-publish
-	git tag -a v$(BLUEPRINT_VERSION) -m "Release"
-	git push origin v$(BLUEPRINT_VERSION)
+	rm -rf $(DIST_FOLDER)
+	git tag -a v$(tag) -m "Release"
+	git push origin v$(tag)
 	goreleaser --snapshot --rm-dist
 	goreleaser release
 
