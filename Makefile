@@ -22,7 +22,8 @@ clean:
 
 prod:
 	# goreleaser --snapshot --skip-publish
-	env
+	git tag -a v$(BLUEPRINT_VERSION) -m "Release"
+	git push origin v$(BLUEPRINT_VERSION)
 	goreleaser --snapshot --rm-dist
 	goreleaser release
 
